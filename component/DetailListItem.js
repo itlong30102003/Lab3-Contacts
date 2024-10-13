@@ -1,0 +1,70 @@
+import { StyleSheet, View ,Text} from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons"
+import colors from "../utils/utils/colors";
+import PropTypes from "prop-types";
+
+const DetailListItem =({ icon, title, subtitle })=>
+{
+    return(
+        <View style={style.borderContainer}>
+            <View style={style.wrapper}>
+                <View style={style.container}>
+                    {icon && (
+                        <Icon
+                            name={icon}
+                            size={24}
+                            style={{
+                                color: colors.black, 
+                                marginRight: 20,
+                            }}
+                        />
+                    )}
+                    <View style={style.contentContainer}>
+                        <Text style={style.title}>{title}</Text>
+                        {subtitle && <Text  style={style.subtitle}>{subtitle}</Text>}
+                    </View>
+                </View> 
+            </View> 
+        </View>    
+    );
+}
+export default DetailListItem;
+
+DetailListItem.propTypes ={
+    icon: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+}
+
+const style = StyleSheet.create({
+    borderContainer:{
+        paddingLeft: 24,
+    },
+    wrapper:{
+        flexDirection:'row',
+        paddingTop:16,
+        paddingBottom:16,
+        paddingRight:24,
+        borderBottomColor:colors.grey,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    container:{
+        flex:1,
+        flexDirection: 'row',
+        alignItems:'center',
+    },
+    contentContainer:{
+        justifyContent:'center',
+        flex:1,
+    },
+    title:{
+        color: colors.black,
+        fontWeight:'bold',
+        fontSize:16,
+    },
+    subtitle:{
+        color: colors.blue,
+        fontSize:15,
+        marginTop:4,
+    },
+})
